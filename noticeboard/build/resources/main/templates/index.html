@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notice Board</title>
+    <style>
+        .container{
+            background: #c3e3cf;
+            width: 350px;
+            height: 250px;
+            padding-bottom: 20px;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: auto;
+            padding: 70px 50px 20px 50px;
+        }
+        .box{
+            width: 360px;
+            height: 35px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .fr{
+            float: right;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:if="!${session.name}">
+        <h2 style="text-align: center">안녕하세요</h2>
+    </div>
+    <div th:if="${session.name}">
+        <h2 style="text-align: center"th:text="|${session.name}님 안녕하세요|"></h2>
+    </div>
+    <div th:if="!${session.name}" class="box">
+        <div class="fr" style="text-align: center;width: 100%; padding-bottom: 5px;">
+            <button onclick="location.href='/users/signUp'" style="height:50px;text-align:center; font-size: 30px; width: 50%;">회원가입</button>
+        </div>
+    </div>
+    <div th:if="!${session.name}" class="box">
+        <div class="fr" style="text-align: center;width: 100%;padding-bottom: 5px;">
+            <button onclick="location.href='/users/login'" style="height:50px;text-align:center; font-size: 30px; width: 50%;">로그인</button>
+        </div>
+    </div>
+    <div th:if="${session.name}" class="box">
+        <div class="fr" style="text-align: center;width: 100%;padding-bottom: 5px;">
+            <button onclick="location.href='/board'" style="height:50px;text-align:center; font-size: 30px; width: 50%;">게시판</button>
+        </div>
+    </div>
+    <div th:if="${session.name}" class="box">
+        <div class="fr" style="text-align: center;width: 100%;padding-bottom: 5px;">
+            <button onclick="location.href='/users/logout'" style="height:50px;text-align:center; font-size: 30px; width: 50%;">로그아웃</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
